@@ -2,18 +2,19 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background-color: #09122C;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("./img/mario.jpg"); /* Substitua pelo caminho da sua imagem */
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   color: #fff;
 }
 
-
-
 .buscar,
 .buscar::placeholder {
-  background-color: #BE3144;
+  background-color: #be3144;
   color: #d7d7d7;
   height: 30px;
 }
@@ -21,7 +22,13 @@ body {
 .promoCard {
   width: 280px;
   transition: transform 0.2s;
-  background: linear-gradient(to bottom, #19587b, #2b87ae);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5),
+    #541628,
+    #541628
+  );
 }
 
 .promoCard:hover {
@@ -29,22 +36,35 @@ body {
 }
 
 .desconto {
-  background-color: #4c6b22;
-  color: #beeb14;
+  background-color: #be3144;
+  color: #fff;
 }
 
 .corValor {
-  color: #beeb14;
+  color: #fff;
 }
 
 #addCarrinho:hover {
-  background-color: #547625;
+  background-color: #be3144;
 }
 
 #addCarrinho:disabled {
-  background-color: #4c6b22;
+  background-color: #be3144;
 }
 
 input.form-control:focus {
   box-shadow: none;
 }
+
+.navbar {
+  background: linear-gradient(to right, #be3144, #541628, #541628, #be3144);
+}
+
+button {
+  background-color: #be3144;
+}
+
+.dvh-100 {
+  height: 100dvh;
+}
+
