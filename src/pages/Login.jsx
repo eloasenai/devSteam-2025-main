@@ -13,12 +13,13 @@ const Login = () => {
       navigate("/");
     }
   };
-  
+
   return (
     <div
       className="container d-flex dvh-100 justify-content-center align-items-center py-5 w-50"
-      style={{ position: "relative" }}>
-        <div
+      style={{ position: "relative" }}
+    >
+      <div
         style={{
           position: "absolute",
           top: "50%",
@@ -28,52 +29,111 @@ const Login = () => {
           height: "600px",
           backgroundColor: "#09122C",
           zIndex: -1,
-          borderRadius: "px",
+          borderRadius: "4px",
+          flexDirection: "column",
+          justifyContent: "right",
+          alignItems: "center",
         }}
       >
         <h2
-        className="h-40"
-        >Iniciar sessão</h2>
+          className="h-40 text-start"
+          style={{
+            fontFamily: "monospace",
+            fontSize: "45px",
+            color: "white",
+            marginTop: "-6%",
+          }}
+        >
+          INICIAR SESSÃO
+        </h2>
       </div>
-      <form onSubmit={handleLogin} className="w-100" style={{ zIndex: 1 }}>
+      <form onSubmit={handleLogin} className="form-login" style={{ zIndex: 1 }}>
         <div className="mb-3">
-          <label className="form-label" htmlFor="frmNome">
-            Nome
+          <label
+            className="form-label"
+            htmlFor="frmNome"
+            style={{ fontFamily: "monospace", fontSize: "24px" }}
+          >
+            NOME
           </label>
           <input
+            style={{
+              width: "600px",
+              height: "50px",
+              backgroundColor: "#1F2B4E",
+              borderColor: "#1F2B4E",
+              borderRadius: "0px",
+            }}
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             className="form-control"
             type="text"
             name="frmNome"
             id="frmNome"
-            style={{ borderRadius: "5px", width:"100%", backgroundColor:"#1F2B4E" }}
           />
         </div>
 
         <div className="mb-3">
-          <label className="form-label" htmlFor="frmEmail">
-            E-mail
+          <label
+            className="form-label"
+            htmlFor="frmEmail "
+            style={{ fontFamily: "monospace", fontSize: "24px" }}
+          >
+            E-MAIL
           </label>
           <input
+            style={{
+              width: "600px",
+              height: "50px",
+              backgroundColor: "#1F2B4E",
+              borderColor: "#1F2B4E",
+              borderRadius: "0px",
+            }}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="form-control align-items-center"
+            className="form-control"
             type="email"
             name="frmEmail"
             id="frmEmail"
-            style={{ borderRadius: "5px", width:"100%", backgroundColor:"#1F2B4E" }}
           />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between", 
+              gap: "20px", 
+              width: "100%", 
+            }}
+          >
+            <button
+              className="btn btn w-50 mt-5"
+              style={{
+                backgroundColor: "#BE3144",
+                height: "50px",
+                fontFamily: "monospace",
+                fontSize: "20px",
+                color: "#ffff",
+                borderRadius: "15px",
+              }}
+            >
+              ENTRAR
+            </button>
+            <button
+              className="btn btn w-50 mt-5"
+              style={{
+                backgroundColor: "#BE3144",
+                height: "50px",
+                fontFamily: "monospace",
+                fontSize: "20px",
+                color: "#ffff",
+                borderRadius: "15px",
+              }}
+              onClick={() => navigate("/CriarConta")}
+            >
+              CRIAR CONTA →
+            </button>
+          </div>
         </div>
-
-        <button
-          className="btn "
-          style={{ borderRadius: "15px", backgroundColor: "#BE3144", width:"100%" }}
-        >
-          Entrar
-        </button>
       </form>
-      
     </div>
   );
 };

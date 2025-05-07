@@ -62,9 +62,21 @@ input.form-control:focus {
 
 button {
   background-color: #be3144;
+  
 }
 
 .dvh-100 {
   height: 100dvh;
 }
+
+.quantidade-jogos {
+  color: white; /* Define a cor dos números como branco */
+}
+
+.bi-trash {
+  color: white !important; /* Define a cor do ícone como branco */
+}
+
+
+
 
