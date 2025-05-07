@@ -68,27 +68,26 @@ const Checkout = () => {
   };
 
   return (
-    <div className="container py-4">
-      <div className="row">
+    <div className="container py-4 text-light align-dropup-center">
+      <div className="row" >
         {/* ... Coluna do carrinho permanece a mesma ... */}
-        <div className="col-lg-8">
+        <div className="col-lg-8" >
           <div
-            className="card border-0 shadow-sm rounded-4 mb-4"
-            style={{ background: "#d9d9d9" }}
+            className="card-header border-bottom-0 py-3 mb-4"
+            style={{ background: "#1F2B4E", borderRadius:"10px", width:"151%"}}
           >
-            <div className="card-header border-bottom-0 py-3">
-              <h4 className="mb-0 fw-bolder">Meu Carrinho</h4>
+            <div className="card-header border-bottom-0 py-3 ">
+              <h4 className="mb-0 fw-bolder" style={{color:"#09122C", fontFamily:"monospace", padding:"18px"}}>Meu Carrinho</h4>
             </div>
             <div className="card-body p-4">
               {carrinho.length === 0 ? (
                 <div className="text-center py-5">
                   <i className="bi bi-cart-x fs-1 text-muted"></i>
-                  <p className="mt-3 mb-0">Seu carrinho está vazio.</p>
+                  <p className="mt-3 mb-0 text-light" style={{fontFamily:"monospace"}}>Seu carrinho está vazio.</p>
                   <button
                     id="addCarrinho"
-                    className="btn btn-success desconto border-0 px-3 py-2 text-light mt-3"
-                    onClick={() => navigate("/")}
-                  >
+                    className="btn btn-success desconto  text-light  border-0 px-3 py-2 text-light mt-3" style={{fontFamily:"monospace"}}
+                    onClick={() => navigate("/")}>
                     Continuar Comprando
                   </button>
                 </div>
@@ -100,50 +99,43 @@ const Checkout = () => {
                         <img
                           src={item.imagem}
                           alt={item.titulo}
-                          className="img-fluid rounded-3 object-fit-cover"
-                          style={{ height: "100px", width: "100%" }}
+                          className="img-fluid rounded-3 object-fit-cover "
+                          style={{ height: "100px", width: "100%" , color:"#fff" }}
                         />
                       </div>
                       <div className="col-md-6 col-8">
-                        <h5 className="fw-bold mb-1">{item.titulo}</h5>
-                        <small className="text-muted">ID: #{item.id}</small>
+                        <h5 className="fw-bold mb-1" style={{ color: "white" }}>
+                          {item.titulo}
+                        </h5>
+                        <small className="text-muted" style={{fontFamily:"monospace", color:"#ffff"}}>ID: #{item.id}</small>
                         <div className="d-flex align-items-center mt-3">
                           <button
                             onClick={() => handleRemoverItem(item)}
                             className="btn btn-sm btn-outline-danger border-0"
                           >
-                            <i className="bi bi-trash me-1"></i> Remover
+                            <i className="bi bi-trash me-1 text-light" style={{fontFamily:"monospace"}}></i> Remover
                           </button>
                         </div>
                       </div>
                       <div className="col-md-4 col-12 mt-3 mt-md-0">
                         <div className="row align-items-center">
                           <div className="col-4 col-md-5">
-                            <div className="border border-dark-subtle border-1 d-flex align-items-center rounded-4 gap-2">
+                            <div className="border border-dark border-1 d-flex align-items-center rounded-4 gap-2" style={{background: "#09122C"}}>
                               <button
                                 className="btn border-0"
                                 type="button"
                                 disabled={item.quantidade === 1}
-                                onClick={() =>
-                                  handleUpdateQuantidade(
-                                    item,
-                                    item.quantidade - 1
-                                  )
-                                }
+                                onClick={() => handleUpdateQuantidade(item, item.quantidade - 1)}
+                                style={{ color: "white" }} // Ícone de menos branco
                               >
                                 -
                               </button>
-                              <span>{item.quantidade}</span>
-
+                              <span style={{ color: "white" }}>{item.quantidade}</span>
                               <button
                                 className="btn border-0"
                                 type="button"
-                                onClick={() =>
-                                  handleUpdateQuantidade(
-                                    item,
-                                    item.quantidade + 1
-                                  )
-                                }
+                                onClick={() => handleUpdateQuantidade(item, item.quantidade + 1)}
+                                style={{ color: "white" }} // Ícone de mais branco
                               >
                                 +
                               </button>
@@ -172,116 +164,121 @@ const Checkout = () => {
             </div>
           </div>
         </div>
-
-        <div className="col-lg-4">
+        <div className="col-lg-4 w-100">
           <div
             className="card border-0 shadow-sm rounded-4"
-            style={{ background: "#d9d9d9" }}
+            style={{ background: "#1F2B4E"}}
           >
             <div className="card-header border-bottom-0 py-3">
-              <h4 className="mb-0 fw-bolder">Resumo do Pedido</h4>
+              <h4 className="mb-0 fw-bolder" style={{fontFamily:"monospace", color:"#09122C"}}>Resumo do Pedido</h4>
             </div>
-            <div className="card-body p-4 pt-3">
-              {/* Seção do cupom de desconto - AGORA NO TOPO */}
-              <div className="mb-3">
-                <label htmlFor="cupom" className="form-label mb-2">
-                  cupom de desconto
-                </label>
-                <div className="input-group">
-                  <input
-                    type="text"
-                    className={`form-control ${
-                      cupomError ? "is-invalid" : ""
-                    } bg-transparent border-dark-subtle`}
-                    id="cupom"
-                    placeholder="Digite seu cupom"
-                    value={cupom}
-                    onKeyDown={(e) => e.key === "Enter" && aplicarCupom()}
-                    onChange={(e) => setCupom(e.target.value)}
-                    disabled={cupomAplicado}
-                  />
-                  {!cupomAplicado ? (
-                    <button
-                      id="addCarrinho"
-                      className="btn btn-success desconto text-light border-0"
-                      type="button"
-                      onClick={aplicarCupom}
-                    >
-                      Aplicar
-                    </button>
-                  ) : (
-                    <button
-                      className="btn btn-outline-danger"
-                      type="button"
-                      onClick={removerCupom}
-                    >
-                      <i className="bi bi-x"></i>
-                    </button>
+            <div className="checkout-container">
+              <div className="card-body p-4">
+                {/* Seção do cupom de desconto - AGORA NO TOPO */}
+                <div className="mb-3">
+                  <label htmlFor="cupom" className="form-label mb-2 text-light" style={{fontFamily:"monospace"}}>
+                    cupom de desconto
+                  </label>
+                  <div className="input-group text-danger">
+                    <input
+                      type="text"
+                      className={`form-control  ${
+                        cupomError ? "is-invalid" : ""
+                      } bg border-light-subtle `}
+                      id="cupom"
+                      placeholder="Digite seu cupom"
+                      value={cupom}
+                      onKeyDown={(e) => e.key === "Enter" && aplicarCupom()}
+                      onChange={(e) => setCupom(e.target.value)}
+                      disabled={cupomAplicado}
+                      style={{backgroundColor:"#fff"}}
+                    />
+                    {!cupomAplicado ? (
+                      <button
+                        id="addCarrinho"
+                        className="btn btn-success desconto text-light border-0 "
+                        type="button"
+                        onClick={aplicarCupom}
+                        style={{fontFamily:"monospace"}}>
+                        APLICAR
+                      </button>
+                    ) : (
+                      <button
+                        className="btn btn-outline-danger "
+                        type="button"
+                        onClick={removerCupom}
+                      >
+                        <i className="bi bi-x"></i>
+                      </button>
+                    )}
+                  </div>
+                  {cupomError && (
+                    <div className="text-danger small mt-1">{cupomError}</div>
                   )}
                 </div>
-                {cupomError && (
-                  <div className="text-danger small mt-1">{cupomError}</div>
-                )}
-              </div>
 
-              {/* PRIMEIRO DIVISOR */}
-              <hr className="my-3" />
+                {/* PRIMEIRO DIVISOR */}
+                <hr className="my-3" />
 
-              {/* Seção de subtotal e frete */}
-              <div className="d-flex justify-content-between mb-2">
-                <span>
-                  Subtotal ({carrinho.length}{" "}
-                  {carrinho.length === 1 ? "item" : "itens"})
-                </span>
-                <span>{formatarMoeda(subtotal)}</span>
-              </div>
-              <div className="d-flex justify-content-between mb-2">
-                <span>Frete</span>
-                <span className="text-success">Grátis</span>
-              </div>
-
-              {/* Exibe o desconto do cupom quando aplicado */}
-              {cupomAplicado && (
-                <div className="d-flex justify-content-between mb-2 mt-2">
-                  <span className="text-success">Desconto (10%)</span>
-                  <span className="text-success">
-                    -{formatarMoeda(descontoCupom)}
+                {/* Seção de subtotal e frete */}
+                <div className="d-flex justify-content-between mb-2 text-light" style={{fontFamily:"monospace"}}>
+                  <span>
+                    Subtotal ({carrinho.length}{" "}
+                    {carrinho.length === 1 ? "item" : "itens"})
                   </span>
+                  <span>{formatarMoeda(subtotal)}</span>
                 </div>
-              )}
+                <div className="d-flex justify-content-between mb-2 text-light" style={{fontFamily:"monospace"}}>
+                  <span>Frete</span>
+                  <span className="text-success text-light" style={{fontFamily:"monospace"}}>Grátis</span>
+                </div>
 
-              {/* SEGUNDO DIVISOR */}
-              <hr className="my-3" />
+                {/* Exibe o desconto do cupom quando aplicado */}
+                {cupomAplicado && (
+                  <div className="d-flex justify-content-between mb-2 mt-2">
+                    <span className="text-success text-light"style={{fontFamily:"monospace"}}>Desconto (10%)</span>
+                    <span className="text-success">
+                      -{formatarMoeda(descontoCupom)}
+                    </span>
+                  </div>
+                )}
 
-              {/* Seção do total */}
-              <div className="d-flex justify-content-between mb-4">
-                <span className="fw-bold">Total</span>
-                <span className="fw-bold fs-4">{formatarMoeda(total)}</span>
+                {/* SEGUNDO DIVISOR */}
+                <hr className="my-3" />
+
+                {/* Seção do total */}
+                <div className="d-flex justify-content-between mb-4">
+                  <span className="fw-bold text-light" style={{fontFamily:"monospace"}}>Total</span>
+                  <span className="fw-bold fs-4">{formatarMoeda(total)}</span>
+                </div>
+
+                {/* Botões de ação */}
+                <button
+                  id="addCarrinho"
+                  className="btn btn-success desconto text-light border-0 text-light w-100 py-3 fw-bold"
+                  onClick={handleConfirmar}
+                  disabled={carrinho.length === 0}
+                  style={{fontFamily:"monospace"}}
+                >
+                  FINALIZAR COMPRA
+                </button>
+
+                <button
+                  style={{
+                    fontFamily:"monospace",
+                    background: isHovered && "#fff",
+                    borderColor: "#fff",
+                    color: !isHovered && "#fff",
+                  }}
+                  className="btn btn-outline-secondary w-100 mt-2 text-light"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                  onClick={() => navigate("/")}
+                
+                >
+                  CONTINUAR COMPRANDO
+                </button>
               </div>
-
-              {/* Botões de ação */}
-              <button
-                id="addCarrinho"
-                className="btn btn-success desconto border-0 text-light w-100 py-3 fw-bold"
-                onClick={handleConfirmar}
-                disabled={carrinho.length === 0}
-              >
-                Finalizar Compra
-              </button>
-
-              <button
-                style={{
-                  background: isHovered && "#2a475e",
-                  borderColor: "#2a475e",
-                  color: !isHovered && "#2a475e",
-                }}
-                className="btn btn-outline-secondary w-100 mt-2"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                onClick={() => navigate("/")}
-              >
-                Continuar Comprando
-              </button>
             </div>
           </div>
         </div>

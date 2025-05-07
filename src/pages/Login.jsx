@@ -10,19 +10,60 @@ const Login = () => {
     e.preventDefault();
     if (nome && email) {
       localStorage.setItem("devlogin", JSON.stringify({ nome, email }));
-
       navigate("/");
     }
   };
 
   return (
-    <div className="container py-5 w-50">
-      <form onSubmit={handleLogin}>
+    <div
+      className="container d-flex dvh-100 justify-content-center align-items-center py-5 w-50"
+      style={{ position: "relative" }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "1000px",
+          height: "600px",
+          backgroundColor: "#09122C",
+          zIndex: -1,
+          borderRadius: "4px",
+          flexDirection: "column",
+          justifyContent: "right",
+          alignItems: "center",
+        }}
+      >
+        <h2
+          className="h-40 text-start"
+          style={{
+            fontFamily: "monospace",
+            fontSize: "45px",
+            color: "white",
+            marginTop: "-6%",
+          }}
+        >
+          INICIAR SESSÃO
+        </h2>
+      </div>
+      <form onSubmit={handleLogin} className="form-login" style={{ zIndex: 1 }}>
         <div className="mb-3">
-          <label className="form-label" htmlFor="frmNome">
-            Nome
+          <label
+            className="form-label"
+            htmlFor="frmNome"
+            style={{ fontFamily: "monospace", fontSize: "24px" }}
+          >
+            NOME
           </label>
           <input
+            style={{
+              width: "600px",
+              height: "50px",
+              backgroundColor: "#1F2B4E",
+              borderColor: "#1F2B4E",
+              borderRadius: "0px",
+            }}
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             className="form-control"
@@ -33,10 +74,21 @@ const Login = () => {
         </div>
 
         <div className="mb-3">
-          <label className="form-label" htmlFor="frmEmail">
-            E-mail
+          <label
+            className="form-label"
+            htmlFor="frmEmail "
+            style={{ fontFamily: "monospace", fontSize: "24px" }}
+          >
+            E-MAIL
           </label>
           <input
+            style={{
+              width: "600px",
+              height: "50px",
+              backgroundColor: "#1F2B4E",
+              borderColor: "#1F2B4E",
+              borderRadius: "0px",
+            }}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="form-control"
@@ -44,9 +96,43 @@ const Login = () => {
             name="frmEmail"
             id="frmEmail"
           />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between", 
+              gap: "20px", 
+              width: "100%", 
+            }}
+          >
+            <button
+              className="btn btn w-50 mt-5"
+              style={{
+                backgroundColor: "#BE3144",
+                height: "50px",
+                fontFamily: "monospace",
+                fontSize: "20px",
+                color: "#ffff",
+                borderRadius: "15px",
+              }}
+            >
+              ENTRAR
+            </button>
+            <button
+              className="btn btn w-50 mt-5"
+              style={{
+                backgroundColor: "#BE3144",
+                height: "50px",
+                fontFamily: "monospace",
+                fontSize: "20px",
+                color: "#ffff",
+                borderRadius: "15px",
+              }}
+              onClick={() => navigate("/CriarConta")}
+            >
+              CRIAR CONTA →
+            </button>
+          </div>
         </div>
-
-        <button className="btn btn-primary w-100">Entrar</button>
       </form>
     </div>
   );
