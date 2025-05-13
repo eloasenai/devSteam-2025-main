@@ -50,6 +50,7 @@ const Checkout = () => {
       navigate("/");
     }
   };
+  
 
   const aplicarCupom = () => {
     if (cupom.trim().toLowerCase() === "devpedreiro") {
@@ -67,6 +68,7 @@ const Checkout = () => {
     setCupomError("");
   };
 
+  
   return (
     <div className="container py-4 text-light align-dropup-center">
       <div className="row" >
