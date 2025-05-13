@@ -6,6 +6,9 @@ import Promotion from "./components/Promotion";
 import CarrinhoOffCanvas from "./components/CarrinhoOffCanvas";
 import OutrosJogos from "./components/OutrosJogos";
 import Perfil from "./pages/Perfil";
+import JogoDetalhe from "./components/JogoDetalhe";
+
+
 
 function App() {
   const [carrinhoItem, setCarrinhoItem] = useState([]);
