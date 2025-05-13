@@ -57,10 +57,7 @@ const PromoCard = (props) => {
             backgroundColor: "rgba(0,0,0,0.7)",
           }}
         >
-          <div
-            className="modal-dialog modal-dialog-centered"
-            role="document"
-          >
+          <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content bg-dark text-light">
               <div className="modal-header">
                 <h5 className="modal-title">{props.titulo}</h5>
@@ -76,14 +73,22 @@ const PromoCard = (props) => {
                   alt={props.titulo}
                   className="img-fluid mb-3"
                 />
-                <p><strong>Descrição:</strong> {props.descricao || "Sem descrição disponível."}</p>
-                <p><strong>Preço original:</strong> {props.precoFormatado}</p>
-                <p><strong>Desconto:</strong> -{props.desconto}%</p>
-                <p><strong>Preço com desconto:</strong> {props.formatarMoeda(precoComDesconto)}</p>
+                <p>
+                  <strong>Descrição:</strong>{" "}
+                  {props.descricao || "Sem descrição disponível."}
+                </p>
+                <p>
+                  <strong>Preço original:</strong> {props.precoFormatado}
+                </p>
+                <p>
+                  <strong>Desconto:</strong> -{props.desconto}%
+                </p>
+                <p>
+                  <strong>Preço com desconto:</strong>{" "}
+                  {props.formatarMoeda(precoComDesconto)}
+                </p>
               </div>
-              <div className="modal-footer">
-                
-              </div>
+              <div className="modal-footer"></div>
             </div>
           </div>
         </div>
