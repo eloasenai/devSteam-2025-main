@@ -6,6 +6,9 @@ import Promotion from "./components/Promotion";
 import CarrinhoOffCanvas from "./components/CarrinhoOffCanvas";
 import OutrosJogos from "./components/OutrosJogos";
 import Perfil from "./pages/Perfil";
+import CriarConta from "./pages/CriarConta";
+import Pagamento from "./pages/Pagamento";
+
 
 function App() {
   const [carrinhoItem, setCarrinhoItem] = useState([]);
@@ -56,7 +59,7 @@ function App() {
     <>
       <Header contadorJogos={carrinhoItem.length} />
       <Promotion
-        onAddCarrinho={handleAddCarrinho} //adicionando o click para promoção
+        onAddCarrinho={handleAddCarrinho}
       />
 
       <CarrinhoOffCanvas
